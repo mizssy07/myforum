@@ -1,5 +1,5 @@
 current directory: /Users/mizuno/RubymineProjects/first_try/myforum/vendor/bundle/ruby/2.3.0/gems/therubyracer-0.12.3/ext/v8
-/Users/mizuno/.rbenv/versions/2.3.7/bin/ruby -r ./siteconf20181126-8287-1jbhh51.rb extconf.rb
+/Users/mizuno/.rbenv/versions/2.3.7/bin/ruby -r ./siteconf20181129-36297-iddgcb.rb extconf.rb
 checking for main() in -lpthread... yes
 checking for main() in -lobjc... yes
 creating Makefile
@@ -87,4 +87,4 @@ linking shared-object v8/init.bundle
 
 current directory: /Users/mizuno/RubymineProjects/first_try/myforum/vendor/bundle/ruby/2.3.0/gems/therubyracer-0.12.3/ext/v8
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 init.bundle ./.gem.20181126-8287-1hjuqaa/v8
+/usr/bin/install -c -m 0755 init.bundle ./.gem.20181129-36297-a0xkun/v8
