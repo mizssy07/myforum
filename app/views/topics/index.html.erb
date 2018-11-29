@@ -1,0 +1,18 @@
+<h1>トピック一覧</h1>
+<ul>
+  <% @topics.each do |topic| %>
+    <li><%= link_to(topic.title, "/topics/show/#{topic.id}") %>
+        <%= link_to("削除",
+                    "/topics/delete/#{topic.id}",
+                    {method: "post",
+                     data: {confirm: "削除してもよろしいですか？"},
+                     class: "btn btn-default btn-sm"}) %>
+    </li>
+
+  <% end %>
+</ul>
+<h1>トピック新規登録</h1>
+<%= form_tag("/topics/create") do %>
+  <input type="text" name="title">
+  <input type="submit" value="作成">
+<% end %>
