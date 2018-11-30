@@ -5,7 +5,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(title: params[:title])
+    @topic = Topic.new(title: params[:title], user_id: @current_user.id)
     @topic.save
     redirect_to("/topics/index")
   end

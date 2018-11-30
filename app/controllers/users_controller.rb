@@ -5,6 +5,15 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    @posts = Post.where(user_id: @user.id)
+  end
+
+  def delete_post
+    @post = Post.find_by(id: params[:id])
+    @post.name = "削除されました"
+    @post.content = "削除されました"
+    @post.save
+    redirect_to("/users/#{@current_user.id}")
   end
 
   def new
@@ -22,6 +31,7 @@ class UsersController < ApplicationController
       flash[:success] = "ユーザー登録が完了しました"
       redirect_to("/users/#{@user.id}")
     else
+      flash[:danger] = "ユーザー登録に失敗しました"
       render("users/new")
     end
   end
@@ -39,6 +49,7 @@ class UsersController < ApplicationController
       flash[:success] = "ユーザー情報を編集しました"
       redirect_to("/users/#{@user.id}")
     else
+      flash[:danger] = "編集に失敗しました"
       render("users/edit")
     end
   end
@@ -53,7 +64,7 @@ class UsersController < ApplicationController
       flash[:success] = "ログインしました"
       redirect_to("/topics/index")
     else
-      @error_message = "メールアドレスまたはパスワードが間違っています"
+      flash[:danger] = "メールアドレスまたはパスワードが間違っています"
       @email = params[:email]
       @password = params[:password]
       render("users/login_form")

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post "users/create" => "users#create"
   get "signup" => "users#new"
   get "users/:id" => "users#show"
+  post "users/delete_post/:id" => "users#delete_post"
   post "login" => "users#login"
   post "logout" => "users#logout"
   get "login" => "users#login_form"

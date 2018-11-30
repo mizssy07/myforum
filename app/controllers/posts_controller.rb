@@ -9,7 +9,8 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to("/topics/show/#{@post.topic_id}")
     else
-      render("topics/show/#{params[:topic_id].to_i}")
+      flash[:danger] = "投稿に失敗しました"
+      redirect_to("/topics/show/#{@post.topic_id}")
     end
   end
 
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
     @post.name = "削除されました"
     @post.content = "削除されました"
     @post.save
-    redirect_to("/topics/show/#{@post.topic_id}")
+    redirect_to("/users/#{@current_user.id}")
   end
   
 end
