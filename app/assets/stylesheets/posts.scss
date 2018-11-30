@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#post_new{
+  position:fixed;
+  bottom:10px;
+  right:10px;
+  z-index:999;
+}
+
 .post_delete_btn{
   position: relative;
   display: inline-block;

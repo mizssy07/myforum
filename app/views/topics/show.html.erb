@@ -2,19 +2,23 @@
 
 <% if @posts.count >= 1 %>
   <% @posts.each.with_index(1) do |post, idx| %>
-    <div>
-      <p>
-        <%= idx %>.
-        <%= post.name %>
-        <input type="hidden" name="id" value="<%= post.id %>">
-        <%= link_to("削除",
-                    "/posts/delete/#{post.id}",
-                    {method: "post",
-                     data: {confirm: "削除してもよろしいですか？"},
-                     class: "btn btn-default btn-sm"}) %>
-        <br>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title">
+          <%= idx %>. <%= post.name %>
+          <input type="hidden" name="id" value="<%= post.id %>">
+          <% if @current_user && post.user_id == @current_user.id %>
+            <%= link_to("削除",
+                        "/posts/delete/#{post.id}",
+                        {method: "post",
+                         data: {confirm: "削除してもよろしいですか？"},
+                         class: "badge badge-dark pull-right"}) %>
+          <% end %>
+        </div>
+      </div>
+      <div class="panel-body">
         <%= post.content %>
-      </p>
+      </div>
     </div>
   <% end %>
 <% else %>

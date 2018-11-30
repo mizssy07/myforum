@@ -1,18 +1,33 @@
 <h1>トピック一覧</h1>
-<ul>
-  <% @topics.each do |topic| %>
-    <li><%= link_to(topic.title, "/topics/show/#{topic.id}") %>
+<% if @topics.count >= 1 %>
+  <ul class="list-group">
+    <% @topics.each.with_index(1) do |topic, idx| %>
+      <li class="list-group-item">
+      <%= idx %>.
+      <%= link_to(topic.title, "/topics/show/#{topic.id}") %>
+      <% if @current_user && topic.user_id == @current_user.id %>
         <%= link_to("削除",
                     "/topics/delete/#{topic.id}",
                     {method: "post",
                      data: {confirm: "削除してもよろしいですか？"},
-                     class: "btn btn-default btn-sm"}) %>
-    </li>
-
-  <% end %>
-</ul>
-<h1>トピック新規登録</h1>
-<%= form_tag("/topics/create") do %>
-  <input type="text" name="title">
-  <input type="submit" value="作成">
+                     class: "badge"}) %>
+      <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h3>まだ書き込みはありません</h3>
 <% end %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">トピック新規登録</h3>
+  </div>
+  <div class="panel-body">
+    <%= form_tag("/topics/create") do %>
+      <input type="text" name="title">
+      <input type="submit" value="作成">
+    <% end %>
+  </div>
+  <div class="panel-footer">フッタ</div>
+</div>
