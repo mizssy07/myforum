@@ -21,12 +21,22 @@
   <h3>まだ書き込みはありません</h3>
 <% end %>
 
-<h3>新規投稿</h3>
-<%= form_tag("/posts/create") do %>
-  <div>
-    名前:<input name="name" value="名無しさん" ><br>
-    本文:<textarea name="content"></textarea>
-    <input type="hidden" name="topic_id" value="<%= @topic.id %>">
-    <input type="submit" value="投稿">
+<% if @current_user %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">
+        新規投稿
+      </div>
+      <%= form_tag("/posts/create") do %>
+        名前:<input name="name" value="名無しさん" ><br>
+        本文:<textarea name="content"></textarea>
+        <input type="hidden" name="topic_id" value="<%= @topic.id %>">
+        <input type="hidden" name="user_id" value="<%= @current_user.id %>">
+        <input type="submit" value="投稿">
+      <% end %>
+    </div>
   </div>
 <% end %>
+
+<div id="post_new">
+</div>
