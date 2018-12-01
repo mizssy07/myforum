@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # home
   get "/" => "home#top"
 
+  # topics
   get "topics/index" => "topics#index"
   get "topics/show/:id" => "topics#show"
   post "topics/create" => "topics#create"
   post "topics/delete/:id" => "topics#delete"
 
+  # posts
   post "posts/create" => "posts#create"
   post "posts/delete/:id" => "posts#delete"
 
+  # users and login fanction
   post "users/:id/update" => "users#update"
   get "users/:id/edit" => "users#edit"
   post "users/create" => "users#create"
