@@ -15,16 +15,19 @@
         <li class="list-group-item">書き込み一覧</li>
       <% @posts.each do |post| %>
             <li class="list-group-item">
-              <%= link_to(Topic.find_by(id: post.topic_id).title,
-                          "/topics/show/#{post.topic_id}") %><br>
-              <%= post.name %><br>
-              <%= post.content %>
-              <input type="hidden" name="id" value="<%= post.id %>">
               <%= link_to("削除",
                           "/users/delete_post/#{post.id}",
                           {method: "post",
                            data: {confirm: "削除してもよろしいですか？"},
                            class: "badge"}) %>
+              <%= link_to(Topic.find_by(id: post.topic_id).title,
+                          "/topics/show/#{post.topic_id}") %><br>
+              <%= post.name %><br>
+              <%= post.content %><br>
+              <% if post.image_name %>
+                <image src="<%= "/post_images/#{post.image_name}" %>"></image>
+              <% end %>
+              <input type="hidden" name="id" value="<%= post.id %>">
             </li>
       <% end %>
       </ul>
