@@ -19,8 +19,9 @@
         </div>
         <div class="panel-body">
           <%= post.content %><br>
-          <% if post.image_name_url %>
-            <img src="<%= post.image_name_url %>" class="img-responsive img-thumbnail">
+          <% if post.image_name.present? %>
+            <img src="<%= post.image_name.url(:thumb) %>"
+                 class="img-responsive img-thumbnail">
           <% end %>
         </div>
       </div>

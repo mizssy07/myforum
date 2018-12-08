@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post "posts/create" => "posts#create"
   post "posts/delete/:id" => "posts#delete"
 
-  # users and login fanction
+  # users and login function
   post "users/:id/update" => "users#update"
   get "users/:id/edit" => "users#edit"
   post "users/create" => "users#create"
