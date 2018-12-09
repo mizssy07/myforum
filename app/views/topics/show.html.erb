@@ -20,8 +20,10 @@
         <div class="panel-body">
           <%= post.content %><br>
           <% if post.image_name.present? %>
-            <img src="<%= post.image_name.url(:thumb) %>"
+            <%= link_to("/posts/show_image/#{post.id}") do %>
+              <img src="<%= post.image_name.url(:thumb) %>"
                  class="img-responsive img-thumbnail">
+            <% end %>
           <% end %>
         </div>
       </div>

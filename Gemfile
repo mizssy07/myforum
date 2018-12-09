@@ -71,3 +71,4 @@ gem 'font-awesome-rails'
 gem 'carrierwave' #アップローダー
 # gem 'mini_magick'#リサイズ機能
 gem 'fog'#本番環境に画像をアップする
+gem 'config' # 定数管理

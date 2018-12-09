@@ -11,7 +11,6 @@ class PostsController < ApplicationController
                      topic_id: params[:topic_id].to_i,
                      user_id: params[:user_id].to_i,
                      image_name: params[:image_name])
-
     if @post.save
       @topic.touch
       @topic.save
@@ -20,6 +19,10 @@ class PostsController < ApplicationController
       flash[:danger] = "投稿に失敗しました"
       redirect_to("/topics/show/#{@post.topic_id}")
     end
+  end
+
+  def show_image
+    @post = Post.find_by(id: params[:id])
   end
 
   def delete

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # posts
   post "posts/create" => "posts#create"
   post "posts/delete/:id" => "posts#delete"
+  get "posts/show_image/:id" => "posts#show_image"
 
   # users and login function
   post "users/:id/update" => "users#update"
