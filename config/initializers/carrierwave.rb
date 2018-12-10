@@ -1,6 +1,6 @@
 CarrierWave.configure do |config|
 
-  config.asset_host = Settings.url
+  config.asset_host = "http://localhost:3000" # or Settings.url
 
   if Rails.env.development? or Rails.env.test?
     config.storage = :file
