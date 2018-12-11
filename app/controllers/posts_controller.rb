@@ -25,6 +25,12 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
   end
 
+  def download
+    @post = Post.find_by(id: params[:id])
+    file_path = @post.image_name.current_path
+    send_file(file_path)
+  end
+
   def delete
     @post = Post.find_by(id: params[:id])
     @post.name = "削除されました"

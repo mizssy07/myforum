@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post "posts/create" => "posts#create"
   post "posts/delete/:id" => "posts#delete"
   get "posts/show_image/:id" => "posts#show_image"
+  get "posts/download/:id" => "posts#download"
 
   # users and login function
   post "users/:id/update" => "users#update"
