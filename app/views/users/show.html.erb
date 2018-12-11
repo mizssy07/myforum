@@ -24,8 +24,11 @@
                           "/topics/show/#{post.topic_id}") %><br>
               <%= post.name %><br>
               <%= post.content %><br>
-              <% if post.image_name %>
-                <image src="<%= "/post_images/#{post.image_name}" %>"></image>
+              <% if post.image_name.present? %>
+                <%= link_to("/posts/show_image/#{post.id}") do %>
+                  <img src="<%= post.image_name.url(:thumb) %>"
+                       class="img-responsive img-thumbnail">
+                <% end %>
               <% end %>
               <input type="hidden" name="id" value="<%= post.id %>">
             </li>
