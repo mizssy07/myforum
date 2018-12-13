@@ -6,7 +6,7 @@ ruby '2.3.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -72,3 +72,7 @@ gem 'carrierwave' #アップローダー
 # gem 'mini_magick'#リサイズ機能
 gem 'fog'#本番環境に画像をアップする
 gem 'config' # 定数管理
+
+# use postgress
+gem 'pg', group: :production
+gem 'sqlite3', group: :development
