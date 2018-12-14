@@ -1,5 +1,6 @@
 {
   "name": "myforum",
+  "stack": "heroku-16",
   "scripts": {
     "postdeploy": "bundle exec rake db:migrate"
   },
