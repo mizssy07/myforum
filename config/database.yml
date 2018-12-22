@@ -26,6 +26,8 @@ test:
 
 production:
   url: <%= ENV['DATABASE_URL'] %>
+  adapter: postgresql
+  prepared_statements: false
   # <<: *default
   # adapter: postgresql
   # encoding: unicode
