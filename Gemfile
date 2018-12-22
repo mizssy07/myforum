@@ -62,11 +62,12 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # use bootstrap
-gem 'therubyracer' # javascript runtime。lessをコンパイルするために必要
+gem  'mini_racer' # javascript runtime
 # gem 'less-rails' # Railsでlessを使えるようにする。Bootstrapがlessで書かれているため
-gem 'less-rails', git: 'https://github.com/MustafaZain/less-rails'
-gem 'twitter-bootstrap-rails' # Bootstrapの本体
+gem 'bootstrap', '~> 4.1.1'
 gem 'font-awesome-rails'
+gem 'jquery-rails'  # If using Bootstrap's JS plugins.
+
 
 # upload image <post>
 gem 'carrierwave' #アップローダー

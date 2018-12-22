@@ -1,6 +1,6 @@
-<div class="container home">
+<div class="container heading">
   <h1>HOME</h1>
-  <h3 class="btn btn-default btn-lg btn-block"><%= link_to(name="板一覧", "/topics/index") %></h3>
-  <h3 class="btn btn-default btn-lg btn-block"><%= link_to("Login", "/login") %></h3>
-  <h3 class="btn btn-default btn-lg btn-block"><%= link_to("Sign up", "/signup") %></h3>
+  <h3><%= link_to("板一覧", "/topics/index", {class: "btn btn-primary btn-lg btn-block btn-text", role: "button"}) %></h3>
+  <h3><%= link_to("Login", "/login", {class: "btn btn-primary btn-lg btn-block btn-text", role: "button"}) %></h3>
+  <h3><%= link_to("Sign up", "/signup", {class: "btn btn-primary btn-lg btn-block btn-text", role: "button"}) %></h3>
 </div>
