@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_22_061751) do
+ActiveRecord::Schema.define(version: 2018_12_24_075313) do
 
   create_table "posts", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2018_12_22_061751) do
     t.integer "topic_id"
     t.integer "user_id"
     t.string "image_name"
+    t.integer "delete_flag"
   end
 
   create_table "topics", force: :cascade do |t|

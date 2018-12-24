@@ -3,9 +3,18 @@
 
   <% if @posts.count >= 1 %>
     <% @posts.each.with_index(1) do |post, idx| %>
+      <% if post.delete_flag == 1 %>
+        <% post.name = "削除されました" %>
+        <% post.content = "削除されました" %>
+        <% post.image_name = nil %>
+      <% end %>
       <div class="card">
         <div class="card-header">
-          <%= idx %>. <%= post.name %>
+          <% if post.delete_flag == 1 %>
+            <%= "#{idx}. #{post.name}" %>
+          <% else %>
+            <%= link_to("#{idx}. #{post.name}", "/users/#{post.user_id}") %>
+          <% end %>
           <input type="hidden" name="id" value="<%= post.id %>">
           <% if @current_user && post.user_id == @current_user.id %>
             <%= link_to("削除",
@@ -37,7 +46,7 @@
         <%= form_tag("/posts/create", {multipart: true}) do %>
           <div class="card-body">
             <div class="form-group">
-              名前:<input name="name" class="form-control" value="名無しさん" >
+              名前:<input name="name" class="form-control" value="<%= @current_user.name %>" >
             </div>
             <div class="form-group">
               本文:<textarea name="content" class="form-control"></textarea>

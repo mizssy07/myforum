@@ -14,12 +14,19 @@
       <ul class="list-group">
         <li class="list-group-item">書き込み一覧</li>
       <% @posts.each do |post| %>
+          <% if post.delete_flag == 1 %>
+            <% post.name = "削除されました" %>
+            <% post.content = "削除されました" %>
+            <% post.image_name = nil %>
+          <% end %>
             <li class="list-group-item">
-              <%= link_to("削除",
-                          "/users/delete_post/#{post.id}",
-                          {method: "post",
-                           data: {confirm: "削除してもよろしいですか？"},
-                           class: "badge badge-secondary float-right"}) %>
+              <% if @current_user && post.user_id == @current_user.id %>
+                <%= link_to("削除",
+                            "/users/delete_post/#{post.id}",
+                            {method: "post",
+                             data: {confirm: "削除してもよろしいですか？"},
+                             class: "badge badge-secondary float-right"}) %>
+              <% end %>
               <%= link_to(Topic.find_by(id: post.topic_id).title,
                           "/topics/show/#{post.topic_id}",
                           class: "title") %><br>
