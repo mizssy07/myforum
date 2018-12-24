@@ -28,9 +28,18 @@
 .return-btn {
   margin-top: 15px;
   text-align: center;
+  padding-bottom: 50px;
 }
 
 .download-btn {
   margin-top: 15px;
   text-align: center;
+}
+
+.card span {
+  color: #F7F7F7;
+  a:link { color: #F7F7F7; }
+  a:visited { color: #F7F7F7; }
+  a:hover { color: #F7F7F7; }
+  a:active { color: #F7F7F7; }
 }

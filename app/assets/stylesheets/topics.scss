@@ -2,6 +2,8 @@
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-ul {
-  list-style-type: none!important;
+.li-text {
+  display:block;
+  width:100%;
+  text-decoration: none; // 効いてないっぽい
 }

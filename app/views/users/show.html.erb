@@ -5,11 +5,11 @@
     <p><%= @user.email %></p>
     <% if @user.id == @current_user.id %>
       <%= link_to("編集", "/users/#{@user.id}/edit",
-                  {class: "btn btn-default btn-sm"}) %>
+                  {class: "btn btn-primary"}) %>
     <% end %>
   </div>
 
-  <div class="user_post_index">
+  <div class="posts">
     <% if @posts.count >= 1 %>
       <ul class="list-group">
         <li class="list-group-item">書き込み一覧</li>
@@ -19,9 +19,10 @@
                           "/users/delete_post/#{post.id}",
                           {method: "post",
                            data: {confirm: "削除してもよろしいですか？"},
-                           class: "badge"}) %>
+                           class: "badge badge-secondary float-right"}) %>
               <%= link_to(Topic.find_by(id: post.topic_id).title,
-                          "/topics/show/#{post.topic_id}") %><br>
+                          "/topics/show/#{post.topic_id}",
+                          class: "title") %><br>
               <%= post.name %><br>
               <%= post.content %><br>
               <% if post.image_name.present? %>

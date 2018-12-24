@@ -35,6 +35,7 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @post.name = "削除されました"
     @post.content = "削除されました"
+    @post.image_name = nil
     @post.save
     redirect_to("/topics/show/#{@post.topic_id}")
   end

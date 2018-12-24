@@ -1,11 +1,11 @@
 <div class="container">
-  <img src="<%= @post.image_name.url %>" class="img-responsive center-block">
+  <img src="<%= @post.image_name.url %>" class="img-fluid mx-auto d-block">
   <div class="download-btn">
     <%= link_to("download", "/posts/download/#{@post.id}",
-                {class: "btn btn-default",
+                {class: "btn btn-primary",
                  download: "#{@post.image_name}"}) %>
   </div>
   <div class="return-btn">
-    <%= link_to("戻る", "/topics/show/#{@post.topic_id}", {class: "btn btn-default"}) %>
+    <button type=button class="btn btn-secondary" onclick='history.back();'>戻る</button>
   </div>
 </div>
