@@ -1,13 +1,20 @@
-<div class="container">
-  <h1>ログイン</h1>
-    <div>
-      <%= form_tag("/login") do %>
-        <p>メールアドレス</p>
-        <input name="email" value="<%= @email %>">
-        <p>パスワード</p>
-        <input type="password" name="password" value="<%= @password %>">
-        <input type="submit" value="ログイン">
-      <% end %>
+<div class="container login-form text-center">
+  <%= form_tag("/login", class: "form-signin") do %>
+    <h1 class="h3 mb-3 font-weight-normal">ログインをどうぞ</h1>
+    <label for="inputEmail" class="sr-only">Emailアドレス</label>
+    <input type="email" name="email" class="form-control" placeholder="Emailアドレス" required autofocus>
+    <label for="inputPassword" class="sr-only">パスワード</label>
+    <input type="password" name="password" class="form-control" placeholder="パスワード" required>
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox" value="remember-me" id="rememberCheck">
+      <label class="form-check-label" for="rememberCheck">
+        状態を記憶する
+      </label>
     </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">ログイン</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+  <% end %>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js" integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP" crossorigin="anonymous"></script>
 </div>
 
