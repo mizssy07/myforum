@@ -16,10 +16,6 @@
     <li class="nav-item"><%= link_to("板一覧", "/topics/index", {class: "nav-link"}) %></li>
     <% if @current_user %>
       <li class="nav-item"><%= link_to("mypage", "/users/#{@current_user.id}", {class: "nav-link"}) %></li>
-    <% else %>
-      <li class="nav-item"><a class="nav-link" href="#">非ログイン時用リンク</a></li>
-    <% end %>
-    <% if @current_user %>
       <li class="nav-item"><%= link_to("Logout", "/logout", {method: :post, class: "nav-link"}) %></li>
     <% else %>
       <li class="nav-item"><%= link_to("Login", "/login", {class: "nav-link"}) %></li>
