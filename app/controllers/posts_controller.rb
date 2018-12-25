@@ -10,7 +10,7 @@ class PostsController < ApplicationController
                      content: params[:content],
                      topic_id: params[:topic_id].to_i,
                      user_id: params[:user_id].to_i,
-                     image_name: params[:image_name].to_s,
+                     image_name: params[:image_name],
                      delete_flag: 0)
     if @post.save
       @topic.touch
