@@ -1,9 +1,8 @@
 CarrierWave.configure do |config|
 
-  config.asset_host = "http://localhost:3000" or Settings.url
-
   if Rails.env.development? or Rails.env.test?
     config.storage = :file
+    config.asset_host = "http://localhost:3000"
   else
     config.fog_credentials = {
       :provider               => 'AWS',
@@ -12,6 +11,7 @@ CarrierWave.configure do |config|
     }
     config.fog_directory  = 'rails-picture-181225'
     config.cache_dir =  :fog
+    config.asset_host = 'https://s3.ap-northeast-1.amazonaws.com/rails-picture-181225'
   end
 
 end
