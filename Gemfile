@@ -68,13 +68,14 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'font-awesome-rails'
 gem 'jquery-rails'  # If using Bootstrap's JS plugins.
 
-
 # upload image <post>
-gem 'carrierwave' #アップローダー
-# gem 'mini_magick'#リサイズ機能
-gem 'fog'#本番環境に画像をアップする
-gem 'config' # 定数管理
+gem 'carrierwave'
+gem 'fog-aws'
+gem 'config'
 
 # use postgress
 gem 'pg', group: :production
 gem 'sqlite3', group: :development
+
+# .env から環境変数を読み込み
+gem 'dotenv-rails', require: 'dotenv/rails-now'
