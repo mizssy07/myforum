@@ -5,15 +5,15 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
-  require 'dotenv'
-  Dotenv.load
+  if Rails.env.development? or Rails.env.test?
+    require 'dotenv'
+    Dotenv.load
+  end
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
   # storage :fog
-  if Rails.env.development?
-    storage :fog
-  elsif Rails.env.test?
+  if Rails.env.development? or Rails.env.test?
     storage :file
   else
     storage :fog
@@ -23,13 +23,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    if Rails.env.development?
-      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    elsif Rails.env.test?
-      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    else
-      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    end
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
