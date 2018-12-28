@@ -27,17 +27,18 @@ class PostsController < ApplicationController
   end
 
   def download
-    if Rails.env.development? or Rails.env.test?
+    # if Rails.env.development? or Rails.env.test?
+      # @post = Post.find_by(id: params[:id])
+      # file_path = @post.image_name.current_path
+      # send_file(file_path)
+    # else
       @post = Post.find_by(id: params[:id])
-      file_path = @post.image_name.current_path
-      send_file(file_path)
-    else
-      @post = Post.find_by(id: params[:id])
-      file  = @post.image_name
-      file_name = ERB::Util.url_encode(file)
-      data = open("#{ENV['AWS_S3_URL']}/uploads/post/image_name/#{@post.id}/#{file_name}")
-      send_data data.read, filename: file_name, disposition: 'attachment', stream: 'true', buffer_size: '4096'
-    end
+      file_name  = @post.file_name
+      file_name = ERB::Util.url_encode(file_name)
+      data = open("#{@post.image_name.url}")
+      send_data(data.read, disposition: 'attachment', filename: file_name, type: @post.content_type,
+                stream: 'true', buffer_size: '4096')
+    # end
   end
 
   def delete
