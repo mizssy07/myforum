@@ -35,7 +35,7 @@ class PostsController < ApplicationController
       @post = Post.find_by(id: params[:id])
       file  = @post.image_name
       file_name = ERB::Util.url_encode(file)
-      data = open("https://s3-ap-northeast-1.amazonaws.com/sample-bucket/uploads/upload/post/image_name/#{file_name}")
+      data = open("#{ENV['AWS_S3_URL']}/uploads/post/image_name/#{@post.id}/#{file_name}")
       send_data data.read, filename: file_name, disposition: 'attachment', stream: 'true', buffer_size: '4096'
     end
   end
