@@ -1,7 +1,7 @@
 CarrierWave.configure do |config|
 
-require 'dotenv-rails'
-Dotenv.load
+# require 'dotenv-rails'
+# Dotenv.load
 
   if Rails.env.development? or Rails.env.test?
     config.storage = :file

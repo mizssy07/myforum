@@ -5,4 +5,12 @@ class Post < ApplicationRecord
 
   mount_uploader :image_name, ImageUploader
 
+  def file_name
+    self.image_name.file.filename
+  end
+
+  def content_type
+    self.image_name.content_type
+  end
+
 end

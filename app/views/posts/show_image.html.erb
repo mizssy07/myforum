@@ -2,8 +2,7 @@
   <img src="<%= @post.image_name.url %>" class="img-fluid mx-auto d-block">
   <div class="download-btn">
     <%= link_to("download", "/posts/download/#{@post.id}",
-                {class: "btn btn-primary",
-                 download: "#{@post.image_name}"}) %>
+                class: "btn btn-primary") %>
   </div>
   <div class="return-btn">
     <button type=button class="btn btn-secondary" onclick='history.back();'>戻る</button>
