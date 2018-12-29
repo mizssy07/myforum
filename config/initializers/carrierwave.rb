@@ -1,12 +1,12 @@
 CarrierWave.configure do |config|
 
-require 'dotenv-rails'
-Dotenv.load
+# require 'dotenv-rails'
+# Dotenv.load
 
-  # if Rails.env.development? or Rails.env.test?
-    # config.storage = :file
-    # config.asset_host = "http://localhost:3000"
-  # else
+  if Rails.env.development? or Rails.env.test?
+    config.storage = :file
+    config.asset_host = "http://localhost:3000"
+  else
     config.fog_provider = 'fog/aws'
     config.fog_credentials = {
       provider: 'AWS',
@@ -19,7 +19,7 @@ Dotenv.load
     config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
     config.fog_directory  = ENV['S3_BUCKET_NAME']
     config.asset_host = ENV['AWS_S3_URL']
-  # end
+  end
 
 end
 
