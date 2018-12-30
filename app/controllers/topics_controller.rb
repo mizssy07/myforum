@@ -6,7 +6,7 @@ class TopicsController < ApplicationController
 
   def create
     @topics = Topic.all
-    if @topics.count > 50
+    if @topics.count >= 50
       flash[:danger] = "スレッドの作成上限数を超えています"
       redirect_to("/topics/index")
     else
