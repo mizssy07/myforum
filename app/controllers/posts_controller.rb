@@ -6,19 +6,25 @@ class PostsController < ApplicationController
 
   def create
     @topic = Topic.find_by(id: params[:topic_id].to_i)
-    @post = Post.new(name: params[:name],
-                     content: params[:content],
-                     topic_id: params[:topic_id].to_i,
-                     user_id: params[:user_id].to_i,
-                     image_name: params[:image_name],
-                     delete_flag: 0)
-    if @post.save
-      @topic.touch
-      @topic.save
-      redirect_to("/topics/show/#{@post.topic_id}")
+    @posts = Post.where(topic_id: params[:id])
+    if @posts.count >= 1000
+      flash[:danger] = "書き込み上限数を超えています"
+      redirect_to("/topics/show/#{@topic.id}")
     else
-      flash[:danger] = "投稿に失敗しました"
-      redirect_to("/topics/show/#{@post.topic_id}")
+      @post = Post.new(name: params[:name],
+                       content: params[:content],
+                       topic_id: params[:topic_id].to_i,
+                       user_id: params[:user_id].to_i,
+                       image_name: params[:image_name],
+                       delete_flag: 0)
+      if @post.save
+        @topic.touch
+        @topic.save
+        redirect_to("/topics/show/#{@post.topic_id}")
+      else
+        flash[:danger] = "投稿に失敗しました"
+        redirect_to("/topics/show/#{@post.topic_id}")
+      end
     end
   end
 
