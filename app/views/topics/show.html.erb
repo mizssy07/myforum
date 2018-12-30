@@ -38,7 +38,7 @@
     <h3>まだ書き込みはありません</h3>
   <% end %>
 
-  <% if @current_user %>
+  <% if @current_user and @posts.count < 1000 %>
     <div class="card">
       <div class="card-header">
         <h4>新規投稿</h4>
