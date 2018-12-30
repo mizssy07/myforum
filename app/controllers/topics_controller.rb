@@ -5,9 +5,15 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(title: params[:title], user_id: @current_user.id)
-    @topic.save
-    redirect_to("/topics/index")
+    @topics = Topic.all
+    if @topics.count >= 50
+      flash[:danger] = "スレッドの作成上限数を超えています"
+      redirect_to("/topics/index")
+    else
+      @topic = Topic.new(title: params[:title], user_id: @current_user.id)
+      @topic.save
+      redirect_to("/topics/index")
+    end
   end
 
   def show

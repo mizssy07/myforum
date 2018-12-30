@@ -19,7 +19,7 @@
     <h3>まだスレッドはありません</h3>
   <% end %>
 
-  <% if @current_user %>
+  <% if @current_user and @topics.count < 50 %>
     <div class="card">
       <div class="card-body">
       <div class="card-title">トピック新規登録</div>
