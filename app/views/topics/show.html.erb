@@ -10,11 +10,7 @@
       <% end %>
       <div class="card">
         <div class="card-header">
-          <% if post.delete_flag == 1 %>
-            <%= "#{idx}. #{post.name}" %>
-          <% else %>
-            <%= link_to("#{idx}. #{post.name}", "/users/#{post.user_id}") %>
-          <% end %>
+          <%= "#{idx}. #{post.name}" %>
           <input type="hidden" name="id" value="<%= post.id %>">
           <% if @current_user && post.user_id == @current_user.id %>
             <%= link_to("削除",
