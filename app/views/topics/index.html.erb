@@ -20,7 +20,7 @@
   <% end %>
 
   <% if @current_user and @topics.count < 50 %>
-    <div class="card">
+    <div class="card topic-new">
       <div class="card-body">
       <div class="card-title">トピック新規登録</div>
         <%= form_tag("/topics/create") do %>

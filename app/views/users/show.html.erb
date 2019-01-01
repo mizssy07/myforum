@@ -3,10 +3,8 @@
   <div class="user">
     <h2><%= @user.name %></h2>
     <p><%= @user.email %></p>
-    <% if @user.id == @current_user.id %>
       <%= link_to("編集", "/users/#{@user.id}/edit",
                   {class: "btn btn-primary"}) %>
-    <% end %>
   </div>
 
   <div class="posts">
@@ -20,13 +18,11 @@
             <% post.image_name = nil %>
           <% end %>
             <li class="list-group-item">
-              <% if @current_user && post.user_id == @current_user.id %>
                 <%= link_to("削除",
                             "/users/delete_post/#{post.id}",
                             {method: "post",
                              data: {confirm: "削除してもよろしいですか？"},
                              class: "badge badge-secondary float-right"}) %>
-              <% end %>
               <%= link_to(Topic.find_by(id: post.topic_id).title,
                           "/topics/show/#{post.topic_id}",
                           class: "title") %><br>

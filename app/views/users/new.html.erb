@@ -1,19 +1,19 @@
 <div class="container login-form text-center">
   <%= form_tag("/users/create", class: "form-signin") do %>
-    <h1 class="h3 mb-3 font-weight-normal">サインインをどうぞ</h1>
+    <h1 class="h3 mb-3 font-weight-normal">サインアップをどうぞ</h1>
     <label for="inputName" class="sr-only">ユーザー名</label>
     <input type="text" name="name" class="form-control" placeholder="ユーザー名" required autofocus>
     <label for="inputEmail" class="sr-only">Emailアドレス</label>
-    <input type="email" name="email" class="form-control" placeholder="Emailアドレス" required autofocus>
+    <input type="email" name="email" class="form-control new-email" placeholder="Emailアドレス" required>
     <label for="inputPassword" class="sr-only">パスワード</label>
-    <input type="password" name="password" class="form-control" placeholder="パスワード" required>
+    <input type="password" name="password" class="form-control" placeholder="パスワード(半角英数6〜32文字)" required>
     <div class="form-check mb-3">
       <input class="form-check-input" type="checkbox" value="remember-me" id="rememberCheck">
       <label class="form-check-label" for="rememberCheck">
         状態を記憶する
       </label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">サインイン</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">サインアップ</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
   <% end %>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
