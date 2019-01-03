@@ -4,7 +4,9 @@
     <ul class="list-group">
       <% @topics.each.with_index(1) do |topic, idx| %>
         <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+          <% posts = Post.where(topic_id: topic.id) %>
           <%= link_to("#{idx}. #{topic.title}", "/topics/show/#{topic.id}", class: "li-text") %>
+          <span class="badge badge-pill badge-primary text-left"><%= "#{posts.count}" %></span>
           <% if @current_user && topic.user_id == @current_user.id %>
               <%= link_to("削除",
                           "/topics/delete/#{topic.id}",
